@@ -1,10 +1,10 @@
-package nl.miwgroningen.se.ch7.advanced.martijn.receptenBoodschappenlijst;
+package nl.miwgroningen.se.ch7.advanced.martijn.receptenboek;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ReceptenBoodschappenlijstApplicationTests {
+class ReceptenboekApplicationTests {
 
 	@Test
 	void contextLoads() {

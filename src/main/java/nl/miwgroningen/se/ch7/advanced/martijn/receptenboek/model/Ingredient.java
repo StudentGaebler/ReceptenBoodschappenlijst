@@ -1,4 +1,4 @@
-package nl.miwgroningen.se.ch7.advanced.martijn.receptenBoodschappenlijst.model;
+package nl.miwgroningen.se.ch7.advanced.martijn.receptenboek.model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -6,6 +6,9 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author Martijn Gäbler <m.gabler@st.hanze.nl>
@@ -21,7 +24,14 @@ public class Ingredient {
     @GeneratedValue
     private Long ingredientId;
 
-    private String name;
+    private String ingredientName;
 
     private double pricePerKilo;
+
+    @ManyToMany(mappedBy = "ingredients")
+    private Set<Recipe> inRecipes = new HashSet<>();
+
+    public String ingredientDisplayName() {
+        return ingredientName;
+    }
 }

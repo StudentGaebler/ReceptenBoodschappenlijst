@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org">
+
+<head th:replace="fragments/general :: baseHeader(~{:: title})">
+    <meta charset="UTF-8">
+    <title>Formulier voor een recept</title>
+</head>
+
+<body>
+<div th:replace="fragments/general :: navbar"></div>
+
+<div class="container">
+    <h1>Maak een nieuw recept aan</h1>
+  <form th:action="@{/recipe/new}" method="post" th:object="${recipe}">
+    <input type="hidden" th:field="*{recipeId}" />
+    <table>
+      <tr>
+        <td><label for="recipeName">Naam recept</label></td>
+        <td><input id="recipeName" type="text" th:field="*{recipeName}"></td>
+      </tr>
+      <tr>
+        <td><label for="ingredients">Ingrediënten</label></td>
+        <td>
+          <select multiple id="ingredients" th:field="*{ingredients}">
+            <option th:each="ingredient : ${allIngredients}" th:value="${ingredient.ingredientId}" th:text="${ingredient.ingredientName}"></option>
+          </select>
+        </td>
+      </tr>
+    </table>
+    <input type="submit" value="Sla recept op">
+  </form>
+</div>
+
+<div th:replace="fragments/general :: footer"></div>
+<div th:replace="fragments/general :: bottomScripts"></div>
+</body>
+</html>

@@ -1,7 +1,7 @@
-package nl.miwgroningen.se.ch7.advanced.martijn.receptenBoodschappenlijst.controller;
+package nl.miwgroningen.se.ch7.advanced.martijn.receptenboek.controller;
 
-import nl.miwgroningen.se.ch7.advanced.martijn.receptenBoodschappenlijst.model.Ingredient;
-import nl.miwgroningen.se.ch7.advanced.martijn.receptenBoodschappenlijst.repository.IngredientRepository;
+import nl.miwgroningen.se.ch7.advanced.martijn.receptenboek.model.Ingredient;
+import nl.miwgroningen.se.ch7.advanced.martijn.receptenboek.repository.IngredientRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,23 +24,19 @@ public class IngredientController {
         this.ingredientRepository = ingredientRepository;
     }
 
-    @GetMapping("/")
+    @GetMapping("/ingredients")
     protected String showIngredientOverview(Model model) {
         model.addAttribute("allIngredients", ingredientRepository.findAll());
+        model.addAttribute("newIngredient", new Ingredient());
         return "ingredientOverview";
     }
 
-    @GetMapping("ingredient/new")
-    protected String showIngredientForm(Model model) {
-        model.addAttribute("ingredient", new Ingredient());
-        return "ingredientForm";
-    }
-
     @PostMapping("ingredient/new")
-    protected String saveOrUpdateIngredient(@ModelAttribute("ingredient") Ingredient ingredient, BindingResult result) {
-        if (!result.hasErrors()) {
-            ingredientRepository.save(ingredient);
+    protected String saveOrUpdateIngredient(@ModelAttribute("newIngredient") Ingredient ingredient, BindingResult result) {
+        if (result.hasErrors()) {
+            return "ingredientOverview";
         }
-        return "redirect:/";
+        ingredientRepository.save(ingredient);
+        return "redirect:/ingredients";
     }
 }

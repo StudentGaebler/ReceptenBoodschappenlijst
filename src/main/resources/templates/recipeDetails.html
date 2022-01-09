@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org">
+
+<head th:replace="fragments/general :: baseHeader(~{:: title})">
+    <meta charset="UTF-8">
+    <title>Details van recept</title>
+</head>
+
+<body>
+<div th:replace="fragments/general :: navbar"></div>
+
+<div class="container">
+  <h1>Details van <span th:text="${recipe.recipeName}"></span></h1>
+
+    <table>
+        <tr>
+            <th>Ingrediënten</th>
+        </tr>
+        <tr>
+            <td th:text="${recipe.ingredientsDisplayString}"></td>
+        </tr>
+    </table>
+
+  <a th:href="@{/recipes/update/{recipeName}(recipeName=${recipe.recipeName})}">Edit</a>
+</div>
+
+<div th:replace="fragments/general :: footer"></div>
+<div th:replace="fragments/general :: bottomScripts"></div>
+</body>
+</html>

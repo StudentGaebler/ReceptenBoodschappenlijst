@@ -4,7 +4,7 @@
     <persistence-units>
       <persistence-unit name="Default">
         <packages>
-          <package value="nl.miwgroningen.se.ch7.advanced.martijn.receptenBoodschappenlijst" />
+          <package value="nl.miwgroningen.se.ch7.advanced.martijn.receptenboek" />
         </packages>
       </persistence-unit>
     </persistence-units>
