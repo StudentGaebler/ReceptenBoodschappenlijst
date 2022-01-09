@@ -26,13 +26,4 @@ public class Recipe {
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Ingredient> ingredients = new HashSet<>();
 
-    public String getIngredientsDisplayString() {
-        StringBuilder ingredientsString = new StringBuilder();
-
-        for (Ingredient ingredient : ingredients) {
-            ingredientsString.append(ingredient.ingredientDisplayName()).append("\n");
-        }
-
-        return ingredientsString.toString();
-    }
 }

@@ -15,9 +15,11 @@
     <table>
         <tr>
             <th>Ingrediënten</th>
+            <th>Hoeveelheid</th>
         </tr>
-        <tr>
-            <td th:text="${recipe.ingredientsDisplayString}"></td>
+        <tr th:each="ingredient : ${recipe.ingredients}">
+            <td th:text="${ingredient.ingredientName}"></td>
+            <td th:text="${ingredient.amount}"></td>
         </tr>
     </table>
 

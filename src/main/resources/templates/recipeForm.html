@@ -22,7 +22,7 @@
         <td><label for="ingredients">Ingrediënten</label></td>
         <td>
           <select multiple id="ingredients" th:field="*{ingredients}">
-            <option th:each="ingredient : ${allIngredients}" th:value="${ingredient.ingredientId}" th:text="${ingredient.ingredientName}"></option>
+            <option th:each="ingredient : ${allIngredients}" th:value="${ingredient.ingredientId}" th:text="${ingredient.displayName}"></option>
           </select>
         </td>
       </tr>

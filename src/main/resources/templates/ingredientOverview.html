@@ -15,11 +15,11 @@
     <table>
         <tr>
             <th>Naam</th>
-            <th>Prijs per kilo</th>
+            <th>Hoeveelheid</th>
         </tr>
         <tr th:each="ingredient : ${allIngredients}">
             <td th:text="${ingredient.ingredientName}"></td>
-            <td th:text="${ingredient.pricePerKilo}"></td>
+            <td th:text="${ingredient.getAmount}"></td>
         </tr>
     </table>
     <h2>Formulier voor een nieuw ingrediënt</h2>
@@ -31,8 +31,8 @@
                 <td><input type="text" th:field="*{ingredientName}" /></td>
             </tr>
             <tr>
-                <td>Prijs per kilo</td>
-                <td><input type="number" th:field="*{pricePerKilo}" /></td>
+                <td>Hoeveelheid</td>
+                <td><input type="text" th:field="*{amount}" /></td>
             </tr>
         </table>
         <input type="submit" value="Sla ingrediënt op" />

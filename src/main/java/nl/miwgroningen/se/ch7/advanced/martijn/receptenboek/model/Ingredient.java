@@ -26,12 +26,12 @@ public class Ingredient {
 
     private String ingredientName;
 
-    private double pricePerKilo;
+    private String amount;
 
     @ManyToMany(mappedBy = "ingredients")
     private Set<Recipe> inRecipes = new HashSet<>();
 
-    public String ingredientDisplayName() {
-        return ingredientName;
+    public String getDisplayName() {
+        return ingredientName + "\t" + amount;
     }
 }

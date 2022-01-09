@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org">
+
+<head th:replace="fragments/general :: baseHeader(~{:: title})">
+    <meta charset="UTF-8">
+    <title>Maak een nieuwe gebruiker aan</title>
+</head>
+
+<body>
+<div th:replace="fragments/general :: navbar"></div>
+
+<div class="container">
+  <form th:action="@{/users/new}" method="post" th:object="${newUser}">
+    <div>
+      <label for="username">Gebruikersnaam:</label>
+      <input type="text" id="username" th:field="*{username}">
+    </div>
+    <div>
+      <label for="password">Wachtwoord:</label>
+      <input type="password" id="password" th:field="*{password}">
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">Sla gebruiker op</button>
+    </div>
+  </form>
+</div>
+
+<div th:replace="fragments/general :: footer"></div>
+<div th:replace="fragments/general :: bottomScripts"></div>
+</body>
+</html>
